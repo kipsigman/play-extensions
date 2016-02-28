@@ -11,7 +11,7 @@ Add the following to your `build.sbt` file:
 ```scala
 resolvers += Resolver.bintrayRepo("kipsigman", "maven")
 
-libraryDependencies += "kipsigman" %% "play-extensions" % "0.1.0"
+libraryDependencies += "kipsigman" %% "play-extensions" % "0.2.0"
 ```
 
 ## Usage
