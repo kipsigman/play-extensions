@@ -28,17 +28,13 @@ class S3Service  @Inject() (config: Config)(implicit ec: ExecutionContext, appli
   
   protected def s3ImageFilename(filename: String): String = s"${s3BucketImagesFolder}/${filename}"
   
-  def uploadImage(image: Image, imageUpload: ImageUpload): Future[Unit] = {
-    
-    val filename = s3ImageFilename(image.filename.get)
-    val bucketFile = BucketFile(filename, image.mimeType, imageUpload.byteArray)
-    
-    s3Bucket.add(bucketFile)
+  def getFile(filename: String): Future[BucketFile] = {
+    s3Bucket.get(filename)
   }
   
   def getImage(imageFilename: String): Future[BucketFile] = {
     val filename = s3ImageFilename(imageFilename)
-    s3Bucket.get(filename)
+    getFile(filename)
   }
   
   def getImage(image: Image): Future[BucketFile] = {
@@ -61,5 +57,12 @@ class S3Service  @Inject() (config: Config)(implicit ec: ExecutionContext, appli
   def removeImage(image: Image): Future[Unit] = {
     val filename = s3ImageFilename(image.filename.get)
     s3Bucket.remove(filename)
+  }
+  
+  def uploadImage(image: Image, imageUpload: ImageUpload): Future[Unit] = {
+    val filename = s3ImageFilename(image.filename.get)
+    val bucketFile = BucketFile(filename, image.mimeType, imageUpload.byteArray)
+    
+    s3Bucket.add(bucketFile)
   }
 }

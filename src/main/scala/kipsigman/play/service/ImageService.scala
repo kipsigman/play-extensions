@@ -7,13 +7,14 @@ import javax.inject.Singleton
 import kipsigman.domain.entity.Content
 import kipsigman.domain.entity.Content.ContentClass
 import kipsigman.domain.entity.ContentImage
+import kipsigman.domain.entity.ContentImage.DisplayType
 import kipsigman.domain.entity.Image
 import kipsigman.domain.repository.ImageRepository
 import kipsigman.play.mvc.ImageUpload
 import org.slf4j.LoggerFactory
 
 @Singleton
-class ImageService @Inject() (imageRepository: ImageRepository, s3Service: S3Service)(implicit ec: ExecutionContext) {
+class ImageService @Inject() (val imageRepository: ImageRepository, s3Service: S3Service)(implicit ec: ExecutionContext) {
   
   protected val logger = LoggerFactory.getLogger(getClass)
   
@@ -32,6 +33,12 @@ class ImageService @Inject() (imageRepository: ImageRepository, s3Service: S3Ser
   
   def findContentImages(contentClass: ContentClass, contentId: Int): Future[Seq[ContentImage]] =
     imageRepository.findContentImages(contentClass, contentId)
+  
+  def findContentImages(contentClass: ContentClass, contentIds: Set[Int]): Future[Seq[ContentImage]] =
+    imageRepository.findContentImages(contentClass, contentIds)
+    
+  def findContentImages(contentClass: ContentClass, contentIds: Set[Int], displayType: DisplayType): Future[Seq[ContentImage]] =
+    imageRepository.findContentImages(contentClass, contentIds, displayType)
   
   def saveContentImage[T <: Content[T]](content: T, image: Image, imageUpload: ImageUpload): Future[ContentImage] = {
     val contentImage = ContentImage(content.id.get, image, ContentImage.DisplayType.Primary, 0)
