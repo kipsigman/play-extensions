@@ -48,7 +48,7 @@ trait JavaScriptResourceController extends Controller with I18nSupport {
   
   protected def routesObjectName: String = "routes"
   
-  private def namespacedName(name: String): String = namespace.map(ns =>  s"$ns.$name").getOrElse(name)
+  protected def namespacedName(name: String): String = namespace.map(ns =>  s"$ns.$name").getOrElse(name)
   
   // Actions
   def configJs = Action {implicit request =>

@@ -14,7 +14,7 @@ Add the following to your `build.sbt` file:
 ```scala
 resolvers += Resolver.bintrayRepo("kipsigman", "maven")
 
-libraryDependencies += "kipsigman" %% "play-extensions" % "0.2.3"
+libraryDependencies += "kipsigman" %% "play-extensions" % "0.2.4"
 ```
 
 ## JavaScript resources
