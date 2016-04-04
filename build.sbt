@@ -9,7 +9,7 @@ resolvers += Resolver.bintrayRepo("kipsigman", "maven")
 resolvers += "Kaliber Internal Repository" at "https://jars.kaliber.io/artifactory/libs-release-local"
 
 libraryDependencies ++= Seq(
-  "kipsigman" %% "scala-domain-model" % "0.2.2",
+  "kipsigman" %% "scala-domain-model" % "0.2.4",
   "commons-io" % "commons-io" % "2.4",
   "net.kaliber" %% "play-s3" % "7.0.2",
   "org.julienrf" %% "play-jsmessages" % "2.0.0",
@@ -17,7 +17,8 @@ libraryDependencies ++= Seq(
   "org.jdom" % "jdom2" % "2.0.6",
   "org.scalatest" %% "scalatest" % "2.2.5" % Test,
   "org.mockito" % "mockito-core" % "1.10.19" % Test,
-  "com.typesafe.play" %% "play-test" % playVersion % Test
+  "com.typesafe.play" %% "play-test" % playVersion % Test,
+  "org.scalatestplus" %% "play" % "1.4.0-M3" % "test"
 )
 
 licenses += ("Apache-2.0", url("https://github.com/kipsigman/play-auth/blob/master/LICENSE"))

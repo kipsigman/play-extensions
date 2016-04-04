@@ -21,6 +21,7 @@ object AjaxHelper {
   }
   
   object Key {
+    val entity = "entity"
     val errors = "errors"
     val id = "id"
   }
@@ -68,10 +69,18 @@ object AjaxHelper {
     errorResult(jsValue)
   }
   
-  def entitySaveSuccessResult(entity: IdEntity)
+  def entitySaveSuccessResult(id: Int)
     (implicit request: RequestHeader, messages: Messages, user: Option[User]): Result = {
     
-    val jsValue = Json.obj(Status.key -> Status.Success.name, Key.id -> entity.id)
+    val jsValue = Json.obj(Status.key -> Status.Success.name, Key.id -> id)
+    successResult(jsValue)
+  }
+  
+  def entitySaveSuccessResult[T <: IdEntity](entity: T)
+    (implicit request: RequestHeader, messages: Messages, user: Option[User], entityWrites: Writes[T]): Result = {
+    
+    val entityJsValue = Json.toJson(entity)(entityWrites)
+    val jsValue = Json.obj(Status.key -> Status.Success.name, Key.entity -> entityJsValue, Key.id -> entity.id)
     successResult(jsValue)
   }
 }
