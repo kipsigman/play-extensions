@@ -9,7 +9,7 @@ resolvers += Resolver.bintrayRepo("kipsigman", "maven")
 resolvers += "Kaliber Internal Repository" at "https://jars.kaliber.io/artifactory/libs-release-local"
 
 libraryDependencies ++= Seq(
-  "kipsigman" %% "scala-domain-model" % "0.2.4",
+  "kipsigman" %% "scala-domain-model" % "0.3.0",
   "commons-io" % "commons-io" % "2.4",
   "net.kaliber" %% "play-s3" % "7.0.2",
   "org.julienrf" %% "play-jsmessages" % "2.0.0",
