@@ -3,6 +3,7 @@ package kipsigman.play.service
 import scala.concurrent.ExecutionContext
 import scala.concurrent.Future
 
+import com.google.inject.Provider
 import com.typesafe.config.Config
 import fly.play.s3.BucketFile
 import fly.play.s3.BucketItem
@@ -16,7 +17,8 @@ import kipsigman.domain.entity.Image
 import kipsigman.play.mvc.ImageUpload
 
 @Singleton
-class S3Service  @Inject() (config: Config)(implicit ec: ExecutionContext, application: Application) {
+class S3Service  @Inject() (config: Config)(implicit ec: ExecutionContext, appProvider: Provider[Application]) {
+  implicit lazy val app = appProvider.get()
   
   protected val logger = LoggerFactory.getLogger(getClass)
   
