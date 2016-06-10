@@ -140,3 +140,7 @@ GET  /s3assets/images/*filename  kipsigman.play.mvc.S3Controller.image(filename)
 ## Image edit/upload
 
 ## Data/form support for java.time
+
+## Contributors/Recognition
+
+* The JavaScript resources was inspired and built on top of [Julien Richard-Foy's play-jsmessages](https://github.com/julienrf/play-jsmessages).
