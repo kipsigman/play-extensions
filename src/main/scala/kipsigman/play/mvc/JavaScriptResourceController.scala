@@ -3,13 +3,14 @@ package kipsigman.play.mvc
 import com.typesafe.config.Config
 import com.typesafe.config.ConfigRenderOptions
 
-import jsmessages.JsMessagesFactory
 import play.api.i18n.I18nSupport
 import play.api.mvc.Action
 import play.api.mvc.Controller
 import play.api.routing.JavaScriptReverseRoute
 import play.api.routing.JavaScriptReverseRouter
 import play.twirl.api.JavaScript
+
+import kipsigman.play.js.JavaScriptMessageService
 
 /**
  * Makes Play application resources available to JavaScript assets.
@@ -36,7 +37,7 @@ trait JavaScriptResourceController extends Controller with I18nSupport {
   // Dependencies
   protected def config: Config
   
-  protected def jsMessagesFactory: JsMessagesFactory
+  protected def javaScriptMessageService: JavaScriptMessageService
   
   
   // Naming configuration
@@ -61,7 +62,7 @@ trait JavaScriptResourceController extends Controller with I18nSupport {
   
   def messagesJs = Action {implicit request =>
     val objectName = s"window.${namespacedName(messagesObjectName)}"
-    val messages = jsMessagesFactory.all.apply(Some(objectName))
+    val messages = javaScriptMessageService.all.apply(Some(objectName))
     Ok(messages)
   }
   

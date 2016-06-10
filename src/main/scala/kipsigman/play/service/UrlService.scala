@@ -9,6 +9,7 @@ import kipsigman.domain.service.UrlUtils
 import play.api.libs.json.JsValue.jsValueToJsLookup
 import play.api.libs.json.Json
 import play.api.libs.json.Json.toJsFieldJsValueWrapper
+import play.api.libs.ws._
 import play.api.libs.ws.WSClient
 import play.api.mvc.RequestHeader
 

@@ -14,7 +14,7 @@ Add the following to your `build.sbt` file:
 ```scala
 resolvers += Resolver.bintrayRepo("kipsigman", "maven")
 
-libraryDependencies += "kipsigman" %% "play-extensions" % "0.3.0"
+libraryDependencies += "kipsigman" %% "play-extensions" % "0.3.2"
 ```
 
 ## JavaScript resources
@@ -26,7 +26,7 @@ import scala.concurrent.ExecutionContext
 import com.typesafe.config.Config
 import javax.inject.Inject
 import javax.inject.Singleton
-import jsmessages.JsMessagesFactory
+import kipsigman.play.js.JavaScriptMessageService
 import kipsigman.play.mvc.JavaScriptResourceController
 import play.api.i18n.MessagesApi
 import play.api.mvc.Action
@@ -36,7 +36,7 @@ import play.api.routing.JavaScriptReverseRoute
 class Application @Inject() (
   messagesApi: MessagesApi,
   protected val config: Config,
-  protected val jsMessagesFactory: JsMessagesFactory) extends Controller with JavascriptResourceController {
+  protected val javaScriptMessagesService: JavaScriptMessagesService) extends Controller with JavascriptResourceController {
   
   // Set your routes
   override protected def javaScriptReverseRoutes: Seq[JavaScriptReverseRoute] = Seq(
