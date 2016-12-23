@@ -10,13 +10,12 @@ resolvers += "Kaliber Internal Repository" at "https://jars.kaliber.io/artifacto
 
 libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-ws" % playVersion,
-  "kipsigman" %% "scala-domain-model" % "0.3.1",
+  "kipsigman" %% "scala-domain-model" % "0.3.3",
   "commons-io" % "commons-io" % "2.5",
   "net.kaliber" %% "play-s3" % "8.0.0",
-  "org.jsoup" % "jsoup" % "1.9.2",
+  "org.jsoup" % "jsoup" % "1.10.1",
   "org.jdom" % "jdom2" % "2.0.6",
-  "org.scalatest" %% "scalatest" % "2.2.6" % Test,
-  "org.mockito" % "mockito-core" % "1.10.19" % Test,
+  "org.mockito" % "mockito-core" % "2.3.11" % Test,
   "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test
 )
 
